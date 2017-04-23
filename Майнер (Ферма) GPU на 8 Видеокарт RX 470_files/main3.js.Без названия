@@ -1,0 +1,156 @@
+(function($) {
+    "use strict";
+    $('.mobile-menu nav').meanmenu({
+        meanScreenWidth: "991",
+        meanMenuContainer: ".mobile-menu",
+    });
+    $('#mainSlider').nivoSlider({
+        directionNav: true,
+        animSpeed: 500,
+        slices: 18,
+        pauseTime: 5000,
+        pauseOnHover: false,
+        controlNav: false,
+        prevText: '<i class="fa fa-angle-left nivo-prev-icon"></i>',
+        nextText: '<i class="fa fa-angle-right nivo-next-icon"></i>'
+    });
+    new WOW().init();
+    $("#single-product-bestseller").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 2000,
+        pagination: false,
+        navigation: true,
+        items: 5,
+        navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        itemsDesktop: [1199, 4],
+        itemsDesktopSmall: [980, 3],
+        itemsTablet: [768, 2],
+        itemsMobile: [479, 1],
+    });
+    $("#feture-products").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 3000,
+        pagination: false,
+        navigation: true,
+        items: 1,
+        navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        itemsDesktop: [1199, 1],
+        itemsDesktopSmall: [980, 1],
+        itemsTablet: [768, 1],
+        itemsMobile: [479, 1],
+    });
+    $("#brands-logo").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 2000,
+        pagination: false,
+        navigation: true,
+        items: 6,
+        navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        itemsDesktop: [1199, 4],
+        itemsDesktopSmall: [980, 3],
+        itemsTablet: [768, 3],
+        itemsMobile: [479, 2],
+    });
+    $("#blog-posts").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 3000,
+        pagination: false,
+        navigation: true,
+        items: 1,
+        navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        itemsDesktop: [1199, 1],
+        itemsDesktopSmall: [980, 1],
+        itemsTablet: [768, 1],
+        itemsMobile: [479, 1],
+    });
+    $("#single-product").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 2000,
+        pagination: false,
+        navigation: true,
+        items: 1,
+        navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        itemsDesktop: [1199, 1],
+        itemsDesktopSmall: [980, 1],
+        itemsTablet: [768, 1],
+        itemsMobile: [479, 1],
+    });
+    $("#single-product-upsell").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 2000,
+        pagination: false,
+        navigation: true,
+        items: 4,
+        navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        itemsDesktop: [1199, 4],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [768, 2],
+        itemsMobile: [479, 1],
+    });
+    $("#single-product-related").owlCarousel({
+        autoPlay: false,
+        slideSpeed: 2000,
+        pagination: false,
+        navigation: true,
+        items: 4,
+        navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+        itemsDesktop: [1199, 4],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [768, 2],
+        itemsMobile: [479, 1],
+    });
+	/*
+    $("#slider-range").slider({
+        range: true,
+        min: 40,
+        max: 600,
+        values: [60, 570],
+        slide: function(event, ui) {
+            $("#amount").val("£" + ui.values[0] + " - £" + ui.values[1]);
+        }
+    });
+    $("#amount").val("£" + $("#slider-range").slider("values", 0) + " - £" + $("#slider-range").slider("values", 1));
+	*/
+    $('#p-view .simpleLens-lens-image').simpleLens({
+        loading_image: 'img/loading.gif'
+    });
+    $.scrollUp({
+        scrollText: '<i class="fa fa-chevron-up"></i>',
+        easingType: 'linear',
+        scrollSpeed: 900,
+        animation: 'fade'
+    });
+	/*
+    $("#slider-range").slider({
+        range: true,
+        min: 0,
+        max: 10000,
+        values: [0, 10000],
+        slide: function(event, ui) {
+            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+        }
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+	*/
+    $('#showlogin').on('click', function() {
+        $('#checkout-login').slideToggle(900);
+    });
+    $('#showcoupon').on('click', function() {
+        $('#checkout_coupon').slideToggle(900);
+    });
+    $('#cbox').on('click', function() {
+        $('#cbox_info').slideToggle(900);
+    });
+    $('#ship-box').on('click', function() {
+        $('#ship-box-info').slideToggle(1000);
+    });
+    $(".payment-accordion").collapse({
+        accordion: true,
+        open: function() {
+            this.slideDown(550);
+        },
+        close: function() {
+            this.slideUp(550);
+        }
+    });
+})(jQuery);

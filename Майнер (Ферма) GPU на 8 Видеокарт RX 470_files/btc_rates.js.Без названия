@@ -1,0 +1,10 @@
+$(document).ready(function(){
+ $( "div#exchange-rates" ).html( "<table><tr><td rowspan='4'><img src='/widget/img/btc.png'></td><td>USD: <span id='content_usd'></span></td></tr><tr><td>UAH: <span id='content_uah'></span></td></tr><tr><td>EUR: <span id='content_eur'></span></td></tr><tr><td>RUB: <span id='content_rub'></span></td></tr><tr><td colspan='2' class='copy'>Powered by <a href='https://asictrade.com/' target='_blank'>AsicTrade</a></td></tr></table>" );
+ $("div#exchange-rates table").css("border-spacing", "0px").css("border-collapse", "collapse").css("font-size", "13.6px").css("color", "#000").css("border", "1px solid#ccc");
+ $("div#exchange-rates td").css("line-height", "1.3");
+ $("div#exchange-rates .copy").css("text-align", "center").css("font-size", "10px").css("border-top", "1px solid#ccc");
+});
+function show_usd() { $.ajax({ url: "/widget/btc_usd.php", cache: false, success: function(html) { $("#content_usd").html(html); } }); } $(document).ready(function(){ show_usd(); setInterval('show_usd()', 60000); }); //опрос раз в минуту
+function show_uah() { $.ajax({ url: "/widget/btc_uah.php", cache: false, success: function(html) { $("#content_uah").html(html); } }); } $(document).ready(function(){ show_uah(); setInterval('show_uah()', 60000); });
+function show_eur() { $.ajax({ url: "/widget/btc_eur.php", cache: false, success: function(html) { $("#content_eur").html(html); } }); } $(document).ready(function(){ show_eur(); setInterval('show_eur()', 60000); });
+function show_rub() { $.ajax({ url: "/widget/btc_rub.php", cache: false, success: function(html) { $("#content_rub").html(html); } }); } $(document).ready(function(){ show_rub(); setInterval('show_rub()', 60000); });

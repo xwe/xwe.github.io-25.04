@@ -1,0 +1,129 @@
+$(document).ready(function(){
+	
+	$("#subscribe_send").click(function(event) {
+		
+		event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+		
+		var sendingForm = $(".footer-newsletter form");
+		
+		if (!formEmailValidation(sendingForm)) {
+			return false;
+		}
+		
+		var email_element = $(sendingForm).find("input#email");
+		var captcha_form = $("#subscribe_news_captcha");
+		captcha_form.find("#captcha_email").val(email_element.val());
+		console.log(email_element.val());
+		$.fancybox( 
+			$('#captcha_popup'),
+			{
+				'autoDimensions'	: false,
+				'width'         	: 350,
+				'height'        	: 350,
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none'
+			} 
+		);
+		
+		$("form").find('input').focus(function() {
+			$(this).removeClass("error");
+			$(this).parent().find('label').removeClass("error");
+		});			
+		
+	});		
+	
+	$("#subscribe_news_captcha").submit(function(event) {
+		
+		event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+		
+		var sendingForm = $(this);
+		
+		if (!formEmailValidation(sendingForm)) {
+			return false;
+		}
+		
+		var submit_btn = $("#subscribe_news_captcha button");
+		var value_text = $(submit_btn).html();
+		var action = '/subscribe_send.php';
+		
+		$.ajax({
+			type: "POST",
+			url: action,
+			data: $(sendingForm).serializeArray(),
+			beforeSend: function() {
+				$(submit_btn).addClass("waiting").html("Отправка");
+				$(submit_btn).attr( "disabled", "disabled" );
+			},
+			success: function(msg, status) {
+				if (msg.indexOf("error") < 0) {
+					console.log('all-good!');
+					$.fancybox.close();
+					setTimeout(500);
+					$(submit_btn).removeClass("waiting");					
+					$(submit_btn).html(value_text);
+					$(submit_btn).removeAttr( "disabled" );
+					$(sendingForm).trigger('reset');
+					$("#popup-success").slideDown(500).delay(3000).slideUp(300);
+				} else {
+					$("#subscribe_news_captcha input").addClass("error");
+					console.log(msg);
+					setTimeout(1000);
+					// $(sendingForm).trigger('reset');
+					$(submit_btn).removeClass("waiting");					
+					$(submit_btn).html(value_text);
+					$(submit_btn).removeAttr( "disabled" );
+				}
+			},
+			error: function() {
+				$(submit_btn).removeClass("waiting").val("Error");
+				setTimeout(3000);
+				$(sendingForm).trigger('reset');
+				$(submit_btn).removeClass("waiting");					
+				$(submit_btn).html(value_text);
+			}
+		});
+	
+	});
+	
+	$("form").find('input').focus(function() {
+		$(this).removeClass("error");
+		$(this).parent().find('label').removeClass("error");
+	});		
+	
+	function formEmailValidation (formElem) {
+		//var text_elements = $(formElem).find("input.required:text");
+		var email_element = $(formElem).find("input#email");
+		var captcha_element = $(formElem).find("input#new_captcha");
+		var errorCounter = 0;
+		$(email_element).each(function(indx, elem) {
+			var re = /^[\w-\.]+@[\w-]+\.[a-z]+$/i;
+			if ($(elem).val() == "" || !(re.test($(elem).val()))) {
+				$(elem).addClass("error");
+				$(elem).parent().find('label').addClass("error");
+				errorCounter++;
+			} else {
+				$(elem).removeClass("error");
+				$(elem).parent().find('label').removeClass("error");
+			}
+		});
+		$(captcha_element).each(function(indx, elem) {
+			if ($(elem).val() == "") {
+				$(elem).addClass("error");
+				$(elem).parent().find('label').addClass("error");
+				errorCounter++;
+			} else {
+				$(elem).removeClass("error");
+				$(elem).parent().find('label').removeClass("error");
+			}
+		});		
+		if (errorCounter > 0) {
+			$(".error_text").show();
+			console.log('validation error!');
+			return false;
+		} else {
+			$(".error_text").hide();
+			return true;
+		}
+	}	
+	
+});
