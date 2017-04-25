@@ -189,7 +189,7 @@ footer.container {
        Main
 ------------------*/
 body {
-  background: #182025 url(../img/pattern.png) 0 0 repeat;
+  background: #182025 url(./img/pattern.png) 0 0 repeat;
   color: #fdfdfd;
   font-family: Source Code Pro;
   font-size: 30px;
