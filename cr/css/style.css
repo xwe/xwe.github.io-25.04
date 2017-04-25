@@ -189,7 +189,7 @@ footer.container {
        Main
 ------------------*/
 body {
-  background: #182025 url(./img/pattern.png) 0 0 repeat;
+  background: #182025 url(../img/pattern.png) 0 0 repeat;
   color: #fdfdfd;
   font-family: Source Code Pro;
   font-size: 30px;
@@ -216,11 +216,11 @@ body:after, body:before {
 }
 body:after {
   content: '';
-  background: #182025 url(./img/pattern.png) 0 0 repeat;
+  background: #182025 url(../img/pattern.png) 0 0 repeat;
   z-index: -1;
 }
 body:before {
-  background: url(./img/cursor.svg) 50% 50% no-repeat;
+  background: url(../img/cursor.svg) 50% 50% no-repeat;
   content: '';
 }
 
@@ -240,7 +240,7 @@ body.preloader:after {
 }
 @media (max-width: 500px) {
   body:before {
-    background: url(./img/finger.svg) 50% 50% no-repeat;
+    background: url(../img/finger.svg) 50% 50% no-repeat;
     content: '';
   }
 }
@@ -527,7 +527,7 @@ body.load footer {
   float: left;
   width: 18px;
   height: 40px;
-  background: url(./img/cursor-yellow.svg) no-repeat;
+  background: url(../img/cursor-yellow.svg) no-repeat;
   margin-right: -100%;
   margin-top: -3px;
 }
@@ -542,7 +542,7 @@ body.load footer {
 }
 .form-input.error .cursor {
   opacity: 1;
-  background: url(./img/cursor-error.svg) no-repeat;
+  background: url(../img/cursor-error.svg) no-repeat;
 }
 
 @media (max-width: 991px) {
@@ -661,7 +661,7 @@ body.load footer {
   color: red;
 }
 .no-enter.error .cursor {
-  background: url(./img/cursor-error.svg) no-repeat;
+  background: url(../img/cursor-error.svg) no-repeat;
 }
 
 @media (max-width: 991px) {
@@ -782,7 +782,7 @@ body.load footer {
   transition: opacity .5s ease;
 }
 .map-canvas:before {
-  background: rgba(24, 32, 37, 0.88) url(./img/pattern.png) 0 0 repeat;
+  background: rgba(24, 32, 37, 0.88) url(../img/pattern.png) 0 0 repeat;
   bottom: 0;
   content: '';
   position: absolute;
